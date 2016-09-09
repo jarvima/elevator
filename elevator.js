@@ -27,6 +27,16 @@
         }
       }
       this.currentFloor = floorNumber;
+      this.openDoors();
+    }
+    
+    this.openDoors = function() {
+      console.log('Elevator ' + this.id + ' opening doors');
+      this.closeDoors();
+    }
+    
+    this.closeDoors = function() {
+      console.log('Elevator ' + this.id + ' closing doors');
     }
   }
 

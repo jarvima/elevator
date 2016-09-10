@@ -5,6 +5,10 @@
     
     this.currentFloor = 1;
     
+    this.setFloorCount = function(count) {
+      this.floorCount = count;
+    }
+    
     // external request
     this.callRequest = function(floorNumber) {
       this.gotoFloor(floorNumber);
@@ -16,6 +20,11 @@
     }
     
     this.gotoFloor = function(floorNumber) {
+      if (floorNumber > this.floorCount) {
+        // do nothing
+        console.log('invalid floor request');
+      }
+      
       if (floorNumber > this.currentFloor) {
         for (var j = this.currentFloor + 1; j <= floorNumber; j++) {
           console.log('Elevator ' + this.id + ' going to floor ' + j);

@@ -12,7 +12,9 @@
       this.elevatorCount = count;
       
       for (var j = 0; j < count; j++) {
-        this.elevators[j] = new Elevator(j);
+        var elevator = new Elevator(j);
+        elevator.setFloorCount(this.floorCount);
+        this.elevators[j] = elevator;
       }
     }
     
@@ -25,6 +27,7 @@
     }
     
     this.start = function() {
+      this.elevators[0].callRequest(11);
       this.elevators[0].callRequest(5);
       this.elevators[0].callRequest(2);
       this.elevators[0].callRequest(7);

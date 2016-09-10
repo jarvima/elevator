@@ -22,7 +22,14 @@
     this.gotoFloor = function(floorNumber) {
       if (floorNumber > this.floorCount) {
         // do nothing
-        console.log('invalid floor request');
+        console.log('invalid floor request', floorNumber);
+        return;
+      }
+      
+      if (floorNumber < 1) {
+        // do nothing
+        console.log('invalid floor request', floorNumber);
+        return;
       }
       
       if (floorNumber > this.currentFloor) {

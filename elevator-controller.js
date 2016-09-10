@@ -28,6 +28,7 @@
     
     this.start = function() {
       this.elevators[0].callRequest(11);
+      this.elevators[0].callRequest(0);
       this.elevators[0].callRequest(5);
       this.elevators[0].callRequest(2);
       this.elevators[0].callRequest(7);

@@ -5,6 +5,8 @@
     
     this.currentFloor = 1;
     this.status = 'empty';
+    this.tripCount = 0;
+    this.floorsPassed = 0;
     
     this.setFloorCount = function(count) {
       this.floorCount = count;
@@ -19,6 +21,11 @@
     this.floorRequest = function(floorNumber) {
       this.status = 'occupied';
       this.gotoFloor(floorNumber);
+    }
+    
+    this.passFloor = function(floorNumber) {
+      console.log('Elevator ' + this.id + ' going to floor ' + floorNumber);
+      this.floorsPassed++;
     }
     
     this.gotoFloor = function(floorNumber) {
@@ -36,16 +43,27 @@
       
       if (floorNumber > this.currentFloor) {
         for (var j = this.currentFloor + 1; j <= floorNumber; j++) {
-          console.log('Elevator ' + this.id + ' going to floor ' + j);
+          this.passFloor(j);
         }
       }
       else if (floorNumber < this.currentFloor) {
         for (var j = this.currentFloor - 1; j >= floorNumber; j--) {
-          console.log('Elevator ' + this.id + ' going to floor ' + j);
+          this.passFloor(j);
         }
       }
       this.currentFloor = floorNumber;
       this.openDoors();
+      this.tripCount++;
+      if (this.tripCount > 99) {
+        this.closeDoors();
+        this.status = 'maintenance';
+      }
+      else {
+        this.status = 'empty';
+      }
+    }
+    
+    this.maintain = function() {
       this.status = 'empty';
     }
     

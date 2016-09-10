@@ -29,7 +29,7 @@
     this.requestElevator = function(floorNumber) {
       var controller = this;
       var answer = null;
-      var keys = Object.getKeys(this.elevators);
+      var keys = Object.keys(this.elevators);
       for (var j = 0; j < keys.length; j++) {
         var elevator = controller.elevators[keys[j]];
         if (elevator.status === 'empty' && elevator.currentFloor == floorNumber) {
@@ -48,10 +48,10 @@
         if (elevator.status === 'occupied') {
           continue;
         }
-        var answerDist = Math.abs(floorNumber - answerDist.currentFloor);
-        var elevatorDist = Math.abs(floorNumber - elevatorDist.currentFloor);
+        var answerDist = Math.abs(floorNumber - answer.currentFloor);
+        var elevatorDist = Math.abs(floorNumber - elevator.currentFloor);
                                   
-        if (elvatorDist < answerDist) {
+        if (elevatorDist < answerDist) {
           answer = elevator;
         }
       }

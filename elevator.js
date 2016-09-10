@@ -4,6 +4,7 @@
     console.log('creating elevator:', this.id);
     
     this.currentFloor = 1;
+    this.status = 'empty';
     
     this.setFloorCount = function(count) {
       this.floorCount = count;
@@ -16,6 +17,7 @@
     
     // internal request
     this.floorRequest = function(floorNumber) {
+      this.status = 'occupied';
       this.gotoFloor(floorNumber);
     }
     
@@ -44,6 +46,7 @@
       }
       this.currentFloor = floorNumber;
       this.openDoors();
+      this.status = 'empty';
     }
     
     this.openDoors = function() {
